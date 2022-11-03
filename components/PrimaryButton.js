@@ -1,12 +1,10 @@
 // import { useLinkProps } from '@react-navigation/native';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+// import { useNavigation } from '@react-navigation/native'
 
 function PrimaryButton({ children, onPress }) {
-    function pressHandler() {
-        console.log('Pressed')
-    }
     return (
-        <Pressable onPress={onPress}>
+        <Pressable onPress={onPress} android_ripple={{ color: '#fefefe' }}>
             <View style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>{children}</Text>
             </View>

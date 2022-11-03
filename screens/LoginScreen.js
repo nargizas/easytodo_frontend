@@ -3,7 +3,7 @@ import PrimaryButton from '../components/PrimaryButton';
 
 function LoginScreen({ navigation }) {
     function pressHandler() {
-        navigation.navigate("Dashboard")
+        navigation.navigate("EmptyDashboard")
     }
     return (
         <View style={styles.appContainer}>
