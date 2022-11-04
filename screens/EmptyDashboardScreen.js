@@ -1,7 +1,11 @@
 import { Text, View, StyleSheet, Image } from 'react-native';
 import AddFloatingButton from '../components/AddFloatingButton';
 
-function EmptyDashboardScreen() {
+function EmptyDashboardScreen({ navigation }) {
+    function addPressHandler() {
+        navigation.navigate("Suggestions")
+    }
+
     return (
         <View style={styles.appContainer}>
             <View style={styles.itemsContainer}>
@@ -12,10 +16,10 @@ function EmptyDashboardScreen() {
                 <Text style={styles.smallerTextItem}>Press "+" to add to-do</Text>
             </View>
             <View style={styles.bottomBar}>
-                <Text style={styles.modeText}>Daily</Text>
+                <Text style={styles.selectedModeText}>Daily</Text>
                 <Text style={styles.modeText}>Weekly</Text>
                 <Text style={styles.modeText}>Monthly</Text>
-                <AddFloatingButton />
+                <AddFloatingButton onPress={addPressHandler} />
             </View>
         </View>
     );
@@ -67,9 +71,17 @@ const styles = StyleSheet.create({
         alignContent: 'flex-end',
         marginBottom: 16
     },
-    modeText: {
+    selectedModeText: {
         flex: 1,
         color: "#f5f5f5",
+        fontSize: 16,
+        justifyContent: 'center',
+        textAlignVertical: 'center'
+    },
+    modeText: {
+        flex: 1,
+        color: "#a3a3a3",
+        fontSize: 16,
         justifyContent: 'center',
         textAlignVertical: 'center'
     }
