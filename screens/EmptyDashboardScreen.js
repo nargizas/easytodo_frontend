@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Image } from 'react-native';
-import PrimaryButton from '../components/PrimaryButton';
+import AddFloatingButton from '../components/AddFloatingButton';
 
 function EmptyDashboardScreen() {
     return (
@@ -10,7 +10,12 @@ function EmptyDashboardScreen() {
                 </View>
                 <Text style={styles.textItem}>Your list is empty!</Text>
                 <Text style={styles.smallerTextItem}>Press "+" to add to-do</Text>
-
+            </View>
+            <View style={styles.bottomBar}>
+                <Text style={styles.modeText}>Daily</Text>
+                <Text style={styles.modeText}>Weekly</Text>
+                <Text style={styles.modeText}>Monthly</Text>
+                <AddFloatingButton />
             </View>
         </View>
     );
@@ -23,11 +28,11 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         backgroundColor: '#1D7874',
-        alignContent: 'center',
-        justifyContent: 'center'
+        // alignContent: 'center',
+        // justifyContent: 'center'
     },
     itemsContainer: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -39,9 +44,6 @@ const styles = StyleSheet.create({
     image: {
         width: 200,
         height: 200
-    },
-    textContainer: {
-        flex: 1
     },
     textItem: {
         textAlign: 'center',
@@ -56,5 +58,19 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         margin: 2,
+    },
+    bottomBar: {
+        flexDirection: 'row',
+        marginLeft: 32,
+        marginRight: 16,
+        justifyContent: 'center',
+        alignContent: 'flex-end',
+        marginBottom: 16
+    },
+    modeText: {
+        flex: 1,
+        color: "#f5f5f5",
+        justifyContent: 'center',
+        textAlignVertical: 'center'
     }
 })
