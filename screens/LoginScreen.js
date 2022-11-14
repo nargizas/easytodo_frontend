@@ -1,10 +1,16 @@
 import { Text, View, StyleSheet, TextInput } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
+import { login } from '../apis/Login'
+import { GlobalStyles } from '../constants/styles';
 
 function LoginScreen({ navigation }) {
     function pressHandler() {
-        navigation.navigate("EmptyDashboard")
+        navigation.navigate("Dashboard")
+        // login();
+        console.log("pressed");
     }
+
+
     return (
         <View style={styles.appContainer}>
             <Text style={styles.textItem}>Hello!</Text>
@@ -21,20 +27,20 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         padding: 16,
-        backgroundColor: '#1D7874',
+        backgroundColor: GlobalStyles.colors.primary,
         alignContent: 'center',
         justifyContent: 'center'
     },
     textItem: {
         textAlign: 'center',
-        color: "#f5f5f5",
+        color: GlobalStyles.colors.grey,
         fontSize: 24,
         fontWeight: 'bold',
         margin: 2,
     },
     smallerTextItem: {
         textAlign: 'center',
-        color: "#f5f5f5",
+        color: GlobalStyles.colors.grey,
         fontSize: 20,
         fontWeight: 'bold',
         margin: 2,
