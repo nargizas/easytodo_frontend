@@ -1,11 +1,22 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
+import { getFormattedDateAndTime } from "../util/date";
+import Checkbox from 'expo-checkbox';
+import { useEffect, useState } from "react";
 
 function ToDoItemCard({ title, deadline, status }) {
+    const [isChecked, setChecked] = useState(status === "DONE");
+
     return <Pressable>
         <View style={styles.toDoItemContainer}>
-            <Text style={styles.textItem}>{title}</Text>
-            <Text style={styles.textItem}>{deadline.toString()}</Text>
-            <Text style={styles.textItem}>{status}</Text>
+            <View style={styles.checkboxContainer}>
+                <Checkbox value={isChecked} color="black" onValueChange={setChecked} />
+            </View>
+            <View>
+                <Text style={styles.textItem}>{title}</Text>
+                <Text style={styles.textItem}>{getFormattedDateAndTime(deadline)}</Text>
+                <Text style={styles.textItem}>{status}</Text>
+
+            </View>
         </View>
     </Pressable>
 
@@ -15,6 +26,7 @@ export default ToDoItemCard;
 
 const styles = StyleSheet.create({
     toDoItemContainer: {
+        flexDirection: 'row',
         borderRadius: 8,
         paddingHorizontal: 16,
         paddingVertical: 8,
@@ -23,14 +35,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 16,
         elevation: 2
     },
-    imageContainer: {
-        margin: 32,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    image: {
-        width: 200,
-        height: 200
+    checkboxContainer: {
+        marginRight: 8,
     },
     textItem: {
         fontSize: 16,

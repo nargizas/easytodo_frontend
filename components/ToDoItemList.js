@@ -1,24 +1,18 @@
 import { View, Image, Text, FlatList, StyleSheet, Pressable } from "react-native";
-import { DUMMY_TODOITEMS } from "../data/dummy_data"
+// import { DUMMY_TODOITEMS } from "../data/dummy_data"
 import ToDoItemCard from "./ToDoItemCard";
 
 function renderToDoItem(toDoItemData) {
     return (
-        // <Pressable>
-        //     <View style={styles.toDoItemContainer}>
-        //         <Text style={styles.textItem}>{toDoItemData.item.title}</Text>
-        //         <Text style={styles.textItem}>{toDoItemData.item.deadline.toString()}</Text>
-        //     </View>
-        // </Pressable>
         <ToDoItemCard {...toDoItemData.item} />
     )
 }
 
 
-function ToDoItemList(toDoItems) {
+function ToDoItemList({ toDoItems }) {
     return (
         <View style={styles.container}>
-            <FlatList data={DUMMY_TODOITEMS}
+            <FlatList data={toDoItems}
                 renderItem={renderToDoItem}
                 keyExtractor={(item) => item.id}
                 ListEmptyComponent={

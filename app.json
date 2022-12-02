@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "EasyToDo",
-    "slug": "EasyToDo",
+    "slug": "easytodo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f41d41c0-236d-4ff1-ad82-a393dfa1edf9"
+      }
+    },
+    "owner": "nargizas"
   }
 }
