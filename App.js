@@ -21,7 +21,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} options={{ headerStyle: { backgroundColor: '#1D7874' }, headerTitleAlign: "center", headerTintColor: "#f5f5f5" }} />
-          <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: "Today/Dashboard", headerStyle: { backgroundColor: '#1D7874' }, headerTitleAlign: "center", headerTintColor: "#f5f5f5" }} />
+          <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: "Dashboard", headerStyle: { backgroundColor: '#1D7874' }, headerTitleAlign: "center", headerTintColor: "#f5f5f5" }} />
           <Stack.Screen name="EmptyDashboard" component={EmptyDashboardScreen} options={{ title: "Today", headerStyle: { backgroundColor: '#1D7874' }, headerTitleAlign: "center", headerTintColor: "#f5f5f5" }} />
           <Stack.Screen name="Suggestions" component={SuggestionsScreen} options={{ title: "Suggestions", headerStyle: { backgroundColor: '#1D7874' }, headerTitleAlign: "center", headerTintColor: "#f5f5f5" }} />
         </Stack.Navigator>
