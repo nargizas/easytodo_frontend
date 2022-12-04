@@ -20,27 +20,24 @@ function LoginScreen({ navigation }) {
     useEffect(() => {
         if (response?.type === "success") {
             setAccessToken(response.authentication.accessToken);
-            navigation.navigate("Dashboard")
+            // navigation.navigate("Dashboard")
         }
         console.log(accessToken)
     }, [response]);
 
     async function getUserData() {
-        // let userInfoResponse = await fetch("https://www.googleapis.com/userinfo/v2/me", {
-        //     headers: {
-        //         Authorization: `Bearer ${accessToken}`
-        //     }
-        // })
+        let userInfoResponse = await axios.post('https://easytodo.p-e.kr/login', {
+            "access_token": accessToken
+        })
 
-        let userInfoResponse = await axios.post('https://easytodo.p-e.kr:443/login', { accessToken })
-        console.log(JSON.stringify(userInfoResponse))
+        let toDoListResponse = await axios.get('https://easytodo.p-e.kr/todoitem', {
+            headers: {
+                'Cookie': `sid=${userInfoResponse.data.token.sid}`
+            }
+        })
+
+        console.log(toDoListResponse.data)
         navigation.navigate("Dashboard")
-        // console.log("getUserInfo")
-        // userInfoResponse.json().then(
-        //     data => {
-        //         setUserInfo(data);
-        //         console.log(JSON.stringify(data));
-        //     })
     }
     function showUserInfo() {
         if (userInfo) {
@@ -59,11 +56,9 @@ function LoginScreen({ navigation }) {
     return (
         <>
             <View style={styles.appContainer}>
-                {showUserInfo()}
                 <Text style={styles.textItem}>Hello!</Text>
                 <Text style={styles.smallerTextItem}>Sign up or Log in:</Text>
                 <PrimaryButton onPress={accessToken ? getUserData : () => { promptAsync({ showInRevents: true }) }}>{accessToken ? "See my To-Do List" : "Continue with Google"}</PrimaryButton>
-                <Text></Text>
             </View>
 
         </>
