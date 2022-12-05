@@ -2,14 +2,16 @@ import { Text, View, StyleSheet, TextInput, Linking } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import { login } from '../apis/Login'
 import { GlobalStyles } from '../constants/styles';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { WebView } from 'react-native-webview';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google'
 import axios from 'axios';
+import { ToDoItemsContext } from '../store/todoitems-context';
 WebBrowser.maybeCompleteAuthSession();
 
 function LoginScreen({ navigation }) {
+
     const [accessToken, setAccessToken] = useState();
     const [userInfo, setUserInfo] = useState();
 
@@ -20,9 +22,10 @@ function LoginScreen({ navigation }) {
     useEffect(() => {
         if (response?.type === "success") {
             setAccessToken(response.authentication.accessToken);
+            console.log(accessToken)
             // navigation.navigate("Dashboard")
         }
-        console.log(accessToken)
+
     }, [response]);
 
     async function getUserData() {
@@ -39,19 +42,6 @@ function LoginScreen({ navigation }) {
         console.log(toDoListResponse.data)
         navigation.navigate("Dashboard")
     }
-    function showUserInfo() {
-        if (userInfo) {
-            <Text>Welcome {userInfo.name}</Text>
-        }
-    }
-
-    // async function pressHandler() {
-    //     console.log("request link");
-    //     let url = await login();
-    //     console.log(JSON.stringify(url));
-    //     let result = await WebBrowser.openBrowserAsync(url);
-    //     // setURL(url);
-    // }
 
     return (
         <>

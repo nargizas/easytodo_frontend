@@ -1,13 +1,15 @@
 import { Text, View, StyleSheet, TextInput, FlatList, Image } from 'react-native';
-import { DUMMY_TODOITEMS } from '../data/dummy_data';
+
 import AddFloatingButton from '../components/AddFloatingButton';
 import ToDoItemsOutput from '../components/ToDoItemsOutput';
 import LeftButton from '../components/LeftButton';
 import RightButton from '../components/RightButton';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { getFormattedDate } from '../util/date';
+import { ToDoItemsContext } from '../store/todoitems-context';
 
 function DashboardScreen({ navigation }) {
+    const toDoItemsCtx = useContext(ToDoItemsContext);
     const [currDate, setCurrDate] = useState(new Date());
 
     function leftButtonPressHandler() {
@@ -39,7 +41,7 @@ function DashboardScreen({ navigation }) {
                 <RightButton onPress={rightButtonPressHandler} />
             </View>
             <View style={styles.itemsContainer}>
-                <ToDoItemsOutput toDoItems={DUMMY_TODOITEMS.filter((obj) => getFormattedDate(obj.deadline) === getFormattedDate(currDate))} />
+                <ToDoItemsOutput toDoItems={toDoItemsCtx.todoitems.filter((obj) => getFormattedDate(obj.deadline) === getFormattedDate(currDate))} />
             </View>
             <View style={styles.bottomBar}>
                 <Text style={styles.selectedModeText}>Daily</Text>
