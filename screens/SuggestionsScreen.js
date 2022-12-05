@@ -1,16 +1,22 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import { useState } from 'react';
+import { NavigationRouteContext } from '@react-navigation/native';
 
-function SuggestionsScreen() {
+function SuggestionsScreen({ navigation }) {
     const [wordSuggestions, setWordSuggestions] = useState(["Do homework", "Work out", "Take a pill", "Call parents"])
+    function suggestionPressHandler() {
+        navigation.navigate("AddItem")
+    }
     return (
         <View style={styles.appContainer}>
             <View >
                 {wordSuggestions.map((word) =>
-                    <View style={styles.textContainer} key={word}>
-                        <Text style={styles.wordText}>{word}</Text>
-                    </View>
+                    <Pressable onPress={suggestionPressHandler} key={word}>
+                        <View style={styles.textContainer} >
+                            <Text style={styles.wordText}>{word}</Text>
+                        </View>
+                    </Pressable>
                 )}
             </View>
             <View style={styles.textContainer} >

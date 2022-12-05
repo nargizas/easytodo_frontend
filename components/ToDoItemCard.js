@@ -2,19 +2,28 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import { getFormattedDateAndTime } from "../util/date";
 import Checkbox from 'expo-checkbox';
 import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
-function ToDoItemCard({ title, deadline, status }) {
-    const [isChecked, setChecked] = useState(status === "DONE");
+function ToDoItemCard({ id, title, deadline, item_status }) {
+    const [isChecked, setChecked] = useState(item_status === "DONE");
+    const navigation = useNavigation();
 
-    return <Pressable>
+    function toDoItemPressHandler() {
+        navigation.navigate("AddItem", {
+            toDoItemId: id
+        });
+    }
+
+
+    return <Pressable onPress={toDoItemPressHandler}>
         <View style={styles.toDoItemContainer}>
             <View style={styles.checkboxContainer}>
-                <Checkbox value={isChecked} color="black" onValueChange={setChecked} />
+                <Checkbox style={{ width: 32, height: 32, }} value={isChecked} color="black" onValueChange={setChecked} />
             </View>
             <View>
                 <Text style={styles.textItem}>{title}</Text>
                 <Text style={styles.textItem}>{getFormattedDateAndTime(deadline)}</Text>
-                <Text style={styles.textItem}>{status}</Text>
+                <Text style={styles.textItem}>{item_status}</Text>
 
             </View>
         </View>
