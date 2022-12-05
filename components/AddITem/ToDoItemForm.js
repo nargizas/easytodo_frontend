@@ -25,7 +25,6 @@ function ToDoItemForm({ suggestedTitle }) {
             onChangeText: inputChangeHandler.bind(this, "title"),
             value: inputValues.title
         }} />
-        <DateTimePicker />
     </View>
 }
 

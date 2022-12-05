@@ -4,7 +4,7 @@ function DateTimePicker() {
     const [show, setShow] = useState(false);
     const [text, setText] = useState('Empty');
 
-    const showMode = (curr)
+    // const showMode = (curr)
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
