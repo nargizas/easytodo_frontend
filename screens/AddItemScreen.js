@@ -12,6 +12,9 @@ function AddItemScreen({ route, navigation }) {
     const isEditing = !!editedToDoItemId;
     const toDoItemsCtx = useContext(ToDoItemsContext);
 
+    const suggestedTitle = route.params?.suggestionTitle;
+    // console.log(suggestedTitle);
+
     useLayoutEffect(() => {
         navigation.setOptions({
             title: isEditing ? "Edit To-do item" : "Add a new item"
@@ -42,7 +45,7 @@ function AddItemScreen({ route, navigation }) {
     return (
         <View style={styles.appContainer}>
             <View style={styles.inputContainer}>
-                <ToDoItemForm />
+                <ToDoItemForm suggestedTitle={suggestedTitle} />
             </View>
             {/* <View> */}
             <View style={styles.buttonsContainer}>

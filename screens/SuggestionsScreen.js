@@ -51,6 +51,8 @@ function SuggestionsScreen({ navigation }) {
             });
         }
 
+
+
         return (
 
             <View >
@@ -64,7 +66,9 @@ function SuggestionsScreen({ navigation }) {
 
         );
     }
-
+    function customPressHandler() {
+        navigation.navigate('AddItem');
+    }
     return (
         <View style={styles.appContainer}>
             <View>
@@ -74,9 +78,12 @@ function SuggestionsScreen({ navigation }) {
                     renderItem={renderSuggestions}
                 />
             </View>
-            <View style={styles.textContainer} >
-                <Text style={styles.customText}>Custom...</Text>
-            </View>
+            <Pressable onPress={customPressHandler}>
+
+                <View style={styles.textContainer} >
+                    <Text style={styles.customText}>Custom...</Text>
+                </View>
+            </Pressable>
         </View>
 
 

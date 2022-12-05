@@ -6,7 +6,7 @@ import DateTimePicker from "./DateTimePicker"
 
 function ToDoItemForm({ suggestedTitle }) {
     const [inputValues, setInputValues] = useState({
-        title: suggestedTitle,
+        title: suggestedTitle || '',
         deadline: new Date(),
         item_status: "IN_PROGRESS"
     });
