@@ -8,9 +8,12 @@ import { ToDoItemsContext } from '../store/todoitems-context';
 import ToDoItemForm from '../components/AddITem/ToDoItemForm';
 
 function AddItemScreen({ route, navigation }) {
+    const toDoItemsCtx = useContext(ToDoItemsContext);
+
     const editedToDoItemId = route.params?.toDoItemId;
     const isEditing = !!editedToDoItemId;
-    const toDoItemsCtx = useContext(ToDoItemsContext);
+
+    const selectedToDoItem = toDoItemsCtx.todoitems.find(toDoItem => toDoItem.id === editedToDoItemId);
 
     const suggestedTitle = route.params?.suggestionTitle;
     // console.log(suggestedTitle);
@@ -32,11 +35,11 @@ function AddItemScreen({ route, navigation }) {
         navigation.goBack();
     }
 
-    function confirmHandler() {
+    function confirmHandler(toDoItemData) {
         if (isEditing) {
-            toDoItemsCtx.updateToDoItem(editedToDoItemId, { title: "Test Update Do Homework", deadline: new Date("2022-12-04"), item_status: "DONE" });
+            toDoItemsCtx.updateToDoItem(editedToDoItemId, toDoItemData);
         } else {
-            toDoItemsCtx.addToDoItem({ title: "Test Do Homework", deadline: new Date(), item_status: "DONE" });
+            toDoItemsCtx.addToDoItem(toDoItemData);
         }
 
         navigation.navigate("Dashboard");
@@ -44,18 +47,18 @@ function AddItemScreen({ route, navigation }) {
 
     return (
         <View style={styles.appContainer}>
-            <View style={styles.inputContainer}>
-                <ToDoItemForm suggestedTitle={suggestedTitle} />
-            </View>
+            {/* <View style={styles.inputContainer}> */}
+            <ToDoItemForm suggestedTitle={suggestedTitle} submitButtonLabel={isEditing ? 'Edit' : 'Add'} cancelHandler={cancelHandler} confirmHandler={confirmHandler} defaultValues={selectedToDoItem} />
+            {/* </View> */}
             {/* <View> */}
-            <View style={styles.buttonsContainer}>
-                <PrimaryButton onPress={cancelHandler}>Cancel</PrimaryButton>
-                <PrimaryButton onPress={confirmHandler}>{isEditing ? 'Edit' : 'Add'}</PrimaryButton>
-                {isEditing &&
-                    <View style={styles.deleteContainer}>
-                        <IconButton icon="trash" color={GlobalStyles.colors.grey} size={36} onPress={deleteToDoItemHandler} />
-                    </View>}
-            </View>
+            {/* <View style={styles.buttonsContainer}> */}
+            {/* <PrimaryButton onPress={cancelHandler}>Cancel</PrimaryButton> */}
+            {/* <PrimaryButton onPress={confirmHandler}>{isEditing ? 'Edit' : 'Add'}</PrimaryButton> */}
+            {isEditing &&
+                <View style={styles.deleteContainer}>
+                    <IconButton icon="trash" color={GlobalStyles.colors.grey} size={36} onPress={deleteToDoItemHandler} />
+                </View>}
+            {/* </View> */}
             {/* </View> */}
         </View>
     );
