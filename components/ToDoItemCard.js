@@ -1,10 +1,12 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
-import { getFormattedDateAndTime } from "../util/date";
+import { getFormattedTime } from "../util/date";
 import Checkbox from 'expo-checkbox';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { ToDoItemsContext } from '../store/todoitems-context';
 
 function ToDoItemCard({ id, title, deadline, item_status }) {
+    const toDoItemsCtx = useContext(ToDoItemsContext);
     const [isChecked, setChecked] = useState(item_status === "DONE");
     const navigation = useNavigation();
 
@@ -14,16 +16,26 @@ function ToDoItemCard({ id, title, deadline, item_status }) {
         });
     }
 
+    function onChange() {
+        setChecked(!isChecked)
+        console.log(isChecked)
+        const toDoItemData = {
+            title: title,
+            deadline: deadline,
+            item_status: isChecked ? "IN_PROGRESS" : "DONE"
+        }
+        toDoItemsCtx.updateToDoItem(id, toDoItemData);
+    }
 
     return <Pressable onPress={toDoItemPressHandler}>
         <View style={styles.toDoItemContainer}>
             <View style={styles.checkboxContainer}>
-                <Checkbox style={{ width: 32, height: 32, }} value={isChecked} color="black" onValueChange={setChecked} />
+                <Checkbox style={{ width: 32, height: 32, }} value={isChecked} color="black" onValueChange={onChange} />
             </View>
             <View>
-                <Text style={styles.textItem}>{title}</Text>
-                <Text style={styles.textItem}>{getFormattedDateAndTime(deadline)}</Text>
-                <Text style={styles.textItem}>{item_status}</Text>
+                <Text style={item_status === "DONE" ? [styles.textItem, { textDecorationLine: 'line-through' }] : styles.textItem}>{title}</Text>
+                <Text style={item_status === "DONE" ? [styles.textItem, { textDecorationLine: 'line-through' }] : styles.textItem}>{getFormattedTime(deadline)}</Text>
+                <Text style={item_status === "DONE" ? [styles.textItem, styles.doneText] : [styles.textItem, styles.inProgressText]}>{item_status === "DONE" ? "Done" : "In progress"}</Text>
 
             </View>
         </View>
@@ -50,4 +62,10 @@ const styles = StyleSheet.create({
     textItem: {
         fontSize: 16,
     },
+    doneText: {
+        color: "green"
+    },
+    inProgressText: {
+        color: "orange"
+    }
 })

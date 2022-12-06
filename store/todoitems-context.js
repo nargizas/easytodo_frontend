@@ -99,7 +99,7 @@ function toDoItemReducer(state, action) {
 }
 
 function ToDoItemsContextProvider({ children }) {
-    const [toDoItemsState, dispatch] = useReducer(toDoItemReducer, DUMMY_TODOITEMS);
+    const [toDoItemsState, dispatch] = useReducer(toDoItemReducer, []);
 
     function addToDoItem(toDoItemData) {
         dispatch({ type: 'ADD', payload: toDoItemData });

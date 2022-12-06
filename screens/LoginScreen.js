@@ -17,6 +17,7 @@ function LoginScreen({ navigation }) {
 
     const [request, response, promptAsync] = Google.useAuthRequest({
         expoClientId: "12610545685-gv1c203f0tbula3jdj8m6bnlo69qeap7.apps.googleusercontent.com",
+        androidClientId: "12610545685-3jcmbapem9d7mqgb83np4icvsgq3heuh.apps.googleusercontent.com",
     })
 
     useEffect(() => {
@@ -46,8 +47,8 @@ function LoginScreen({ navigation }) {
     return (
         <>
             <View style={styles.appContainer}>
-                <Text style={styles.textItem}>Hello!</Text>
-                <Text style={styles.smallerTextItem}>Sign up or Log in:</Text>
+                <Text style={styles.textItem}>{accessToken ? "" : "Hello!"}</Text>
+                <Text style={styles.smallerTextItem}>{accessToken ? "You are logged in!" : "Sign up or Log in:"}</Text>
                 <PrimaryButton onPress={accessToken ? getUserData : () => { promptAsync({ showInRevents: true }) }}>{accessToken ? "See my To-Do List" : "Continue with Google"}</PrimaryButton>
             </View>
 

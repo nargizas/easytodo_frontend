@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/f41d41c0-236d-4ff1-ad82-a393dfa1edf9"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -24,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.easytodo.todolistapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -35,6 +37,9 @@
       }
     },
     "owner": "nargizas",
-    "scheme": "easytodo"
+    "scheme": "easytodo",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }
