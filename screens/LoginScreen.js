@@ -7,11 +7,9 @@ import { WebView } from 'react-native-webview';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google'
 import axios from 'axios';
-import { ToDoItemsContext } from '../store/todoitems-context';
 WebBrowser.maybeCompleteAuthSession();
 
 function LoginScreen({ navigation }) {
-
     const [accessToken, setAccessToken] = useState();
     const [userInfo, setUserInfo] = useState();
 
@@ -41,6 +39,15 @@ function LoginScreen({ navigation }) {
         })
 
         console.log(toDoListResponse.data)
+
+        // for (let i = 0; i < toDoListResponse.data.length; i++) {
+        //     const toDoItem = toDoListResponse.data[i]
+        //     toDoItemsCtx.initializeToDoItem(toDoItem.id, {
+        //         title: toDoItem.title,
+        //         deadline: toDoItem.deadline,
+        //         item_status: toDoItem.status
+        //     })
+        // }
         navigation.navigate("Dashboard")
     }
 

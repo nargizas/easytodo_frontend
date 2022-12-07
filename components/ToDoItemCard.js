@@ -18,7 +18,7 @@ function ToDoItemCard({ id, title, deadline, item_status }) {
 
     function onChange() {
         setChecked(!isChecked)
-        console.log(isChecked)
+        // console.log(isChecked)
         const toDoItemData = {
             title: title,
             deadline: deadline,

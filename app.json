@@ -11,6 +11,8 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "currentFullName": "@nargizas/easytodo",
+    "originalFullName": "@nargizas/easytodo",
     "updates": {
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/f41d41c0-236d-4ff1-ad82-a393dfa1edf9"

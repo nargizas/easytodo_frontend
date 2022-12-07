@@ -1,71 +1,7 @@
+import axios from "axios";
 import { createContext } from "react";
 import { useReducer } from "react";
 import ToDoItem from "../models/todoitem";
-
-const DUMMY_TODOITEMS = [
-    new ToDoItem(
-        "td1",
-        "Do Homework",
-        new Date(2022, 11, 2, 23, 30),
-        false,
-        "r1",
-        ["university"],
-        "important",
-        "DONE"
-
-    ),
-    new ToDoItem(
-        "td2",
-        "Take a shower",
-        new Date(2022, 11, 3, 23, 30),
-        true,
-        "r2"
-    ),
-    new ToDoItem(
-        "td3",
-        "Work Out",
-        new Date(2022, 11, 2, 20, 30),
-        false,
-        "r3"
-    ),
-    new ToDoItem(
-        "td4",
-        "Do Homework 2",
-        new Date(2022, 11, 4, 22, 30),
-        false,
-        "r4"
-    ),
-    new ToDoItem(
-        "td5",
-        "Do Homework 3",
-        new Date(2022, 11, 5, 22, 30),
-        false,
-        "r4"
-    ),
-    new ToDoItem(
-        "td6",
-        "Do Homework 6",
-        new Date(2022, 11, 10, 22, 30),
-        false,
-        "r4"
-    ),
-
-    new ToDoItem(
-        "td7",
-        "BlahBlah",
-        new Date(2022, 11, 11, 22, 30),
-        false,
-        "r4"
-    ),
-
-    new ToDoItem(
-        "td8",
-        "BlahBlahBkjbolajbv",
-        new Date(2022, 11, 7, 22, 30),
-        false,
-        "r4",
-    )
-]
 
 export const ToDoItemsContext = createContext({
     todoitems: [],
@@ -78,8 +14,17 @@ function toDoItemReducer(state, action) {
     switch (action.type) {
         case 'ADD':
             const id = new Date().toString() + Math.random().toString();
+            // const id = await axios.post('adsad', { ...action.payload }, {})
             // console.log([{ ...action.payload, id: id }, ...state])
             return [{ ...action.payload, id: id }, ...state]
+        case 'INIT':
+            for (let i = 0; i < state.length; i++) {
+                const stateItem = state[i]
+                if (stateItem.id == action.payload.id) {
+                    return state
+                }
+            }
+            return [{ ...action.payload.data, id: action.payload.id }, ...state]
         case 'UPDATE':
             const updatableToDoItemIndex = state.findIndex((toDoItem) => toDoItem.id === action.payload.id);
             const updatableToDoItem = state[updatableToDoItemIndex];

@@ -1,7 +1,6 @@
 import { Text, View, StyleSheet, Button, Platform } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { useState, useLayoutEffect, useContext } from 'react';
-import { getFormattedDate, getFormattedTime } from '../util/date';
 import IconButton from '../components/IconButton';
 import PrimaryButton from '../components/PrimaryButton';
 import { ToDoItemsContext } from '../store/todoitems-context';
@@ -81,11 +80,6 @@ const styles = StyleSheet.create({
     inputContainer: {
         flex: 2,
     },
-
-    datetimeText: {
-        color: "#f5f5f5",
-        fontSize: 16,
-    },
     textContainer: {
         borderRadius: 8,
         paddingHorizontal: 16,
@@ -100,12 +94,5 @@ const styles = StyleSheet.create({
     customText: {
         color: "#a3a3a3",
         fontSize: 16
-    },
-    FlairText: {
-        flex: 1,
-        color: "#f5f5f5",
-        fontSize: 24,
-        justifyContent: 'space-around',
-        textAlignVertical: 'flex-start'
     },
 })

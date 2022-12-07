@@ -23,27 +23,6 @@ const suggestions = [
 
 function SuggestionsScreen({ navigation }) {
 
-    // const [wordSuggestions, setWordSuggestions] = useState(["Do homework", "Work out", "Take a pill", "Call parents"])
-    // function suggestionPressHandler() {
-    //     navigation.navigate("AddItem")
-    // }
-    // return (
-    //     <View style={styles.appContainer}>
-    //         <View >
-    //             {wordSuggestions.map((word) =>
-    //                 <Pressable onPress={suggestionPressHandler} key={word}>
-    //                     <View style={styles.textContainer} >
-    //                         <Text style={styles.wordText}>{word}</Text>
-    //                     </View>
-    //                 </Pressable>
-    //             )}
-    //         </View>
-    //         <View style={styles.textContainer} >
-    //             <Text style={styles.customText}>Custom...</Text>
-    //         </View>
-    //     </View>
-    // );
-
     function renderSuggestions(itemData) {
         function pressHandler() {
             navigation.navigate('AddItem', {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import Input from "./Input";
 import DateTimeInput from "./DateTimeInput"
 import PrimaryButton from '../../components/PrimaryButton';
@@ -54,13 +54,18 @@ function ToDoItemForm({ suggestedTitle, cancelHandler, confirmHandler, submitBut
     };
 
     function submitHandler() {
-        const toDoItemDate = {
+        const toDoItemData = {
             title: inputValues.title,
             deadline: new Date(inputValues.deadline),
             item_status: inputValues.item_status
         }
 
-        confirmHandler(toDoItemDate);
+        const titleIsValid = toDoItemData.title.trim().length > 0;
+        if (!titleIsValid) {
+            Alert.alert("Invalid input", "Please check your title");
+            return;
+        }
+        confirmHandler(toDoItemData);
     }
 
     return <View style={styles.appContainer}>
