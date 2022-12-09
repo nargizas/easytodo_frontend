@@ -1,34 +1,17 @@
-import { createContext } from "react";
-import { useReducer } from "react";
+/* eslint-disable react/prop-types */
+import { React, createContext, useState } from 'react';
 
-export const LoginContext = createContext({
-    sids: [],
-    initializeSID: (sid) => { }
-})
+const [sid, setSid] = useState('');
 
-function loginReducer(state, action) {
-    switch (action.type) {
-        case 'INIT':
-            console.log("now here");
-            // console.log(action.payload)
-            return [action.payload, ...state]
-        default:
-            return state;
-    }
-}
+const LoginContext = createContext({ sid, setSid });
 
 function LoginContextProvider({ children }) {
-    const [sidState, dispatch] = useReducer(loginReducer, []);
-
-    function initializeSID(sid) {
-        dispatch({ type: 'INIT', payload: sid });
-    }
-    const value = {
-        sids: sidState,
-        initializeSID: initializeSID
-    };
-    return <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
-
+  return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <LoginContext.Provider value={{ sid, setSid }}>
+      {children}
+    </LoginContext.Provider>
+  );
 }
 
-export default LoginContextProvider;
+export { LoginContext, LoginContextProvider };
