@@ -42,6 +42,9 @@
     "scheme": "easytodo",
     "runtimeVersion": {
       "policy": "sdkVersion"
-    }
+    },
+    "plugins": [
+      "@config-plugins/detox"
+    ]
   }
 }

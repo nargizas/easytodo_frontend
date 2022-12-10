@@ -36,8 +36,10 @@ const styles = StyleSheet.create({
   },
 });
 
-function ToDoItemCard({sid, curtoDoItemData}) {
-  const { id, title, deadline, status } = curtoDoItemData;
+function ToDoItemCard({ sid, curtoDoItemData }) {
+  const {
+    id, title, deadline, status,
+  } = curtoDoItemData;
   const toDoItemsCtx = useContext(ToDoItemsContext);
   const [isChecked, setChecked] = useState(status === 'DONE');
   const navigation = useNavigation();

@@ -7,7 +7,6 @@ import React from 'react';
 // import { DUMMY_TODOITEMS } from "../data/dummy_data"
 import ToDoItemCard from './ToDoItemCard';
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

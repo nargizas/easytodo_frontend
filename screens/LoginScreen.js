@@ -65,7 +65,7 @@ function LoginScreen({ navigation }) {
       },
     });
 
-    console.log(toDoListResponse.data);
+    // console.log(toDoListResponse.data);
 
     for (let i = 0; i < toDoListResponse.data.length; i += 1) {
       const toDoItem = toDoListResponse.data[i];

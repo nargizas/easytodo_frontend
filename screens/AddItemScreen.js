@@ -85,7 +85,7 @@ function AddItemScreen({ route, navigation }) {
       await updateToDoItem(editedToDoItemId, toDoItemData, sid);
     } else {
       const id = await storeToDoItem(toDoItemData, sid);
-      toDoItemsCtx.addToDoItem({ ...toDoItemData, id: id });
+      toDoItemsCtx.addToDoItem({ ...toDoItemData, id });
     }
 
     navigation.navigate('Dashboard', {

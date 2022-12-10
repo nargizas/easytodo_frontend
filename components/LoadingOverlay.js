@@ -2,14 +2,14 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import React from 'react';
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 24,
-    },
-  });
-  
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+});
+
 function LoadingOverlay() {
   return (
     <View style={styles.container}>
@@ -19,4 +19,3 @@ function LoadingOverlay() {
 }
 
 export default LoadingOverlay;
-

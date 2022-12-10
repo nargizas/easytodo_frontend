@@ -58,6 +58,20 @@ const styles = StyleSheet.create({
   },
 });
 
+export const getPreviousDay = (currDateIn) => {
+  const dateOffset = (24 * 60 * 60 * 1000);
+  const myDate = new Date();
+  myDate.setTime(currDateIn.getTime() - dateOffset);
+  return myDate;
+};
+
+export const getNextDay = (currDateIn) => {
+  const dateOffset = (24 * 60 * 60 * 1000);
+  const myDate = new Date();
+  myDate.setTime(currDateIn.getTime() + dateOffset);
+  return myDate;
+};
+
 function DashboardScreen({ route, navigation }) {
   const sid = route.params?.sid;
 
@@ -65,20 +79,10 @@ function DashboardScreen({ route, navigation }) {
   const [currDate, setCurrDate] = useState(new Date());
 
   function leftButtonPressHandler() {
-    setCurrDate((currDateIn) => {
-      const dateOffset = (24 * 60 * 60 * 1000);
-      const myDate = new Date();
-      myDate.setTime(currDateIn.getTime() - dateOffset);
-      return myDate;
-    });
+    setCurrDate(getPreviousDay);
   }
   function rightButtonPressHandler() {
-    setCurrDate((currDateIn) => {
-      const dateOffset = (24 * 60 * 60 * 1000);
-      const myDate = new Date();
-      myDate.setTime(currDateIn.getTime() + dateOffset);
-      return myDate;
-    });
+    setCurrDate(getNextDay);
   }
 
   // console.log(JSON.stringify(...DUMMY_TODOITEMS))

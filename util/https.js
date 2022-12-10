@@ -10,8 +10,8 @@ export async function storeToDoItem(toDoItemData, sid) {
       Cookie: sid,
     },
   });
-  console.log(response.data);
-  const  id = response.data;
+  // console.log(response.data);
+  const id = response.data;
   return id;
 }
 
