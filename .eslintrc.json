@@ -1,0 +1,56 @@
+{
+    "parser": "@babel/eslint-parser",
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "eslint:recommended"
+    ],
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "requireConfigFile": false,
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react-native",
+        "react"
+    ],
+    "rules": {
+        "max-len": [
+            "error",
+            {
+                "code": 150
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "react/prop-types": [
+            "error",
+            {
+                "ignore": [
+                    "navigation"
+                ]
+            }
+        ]
+    }
+}
