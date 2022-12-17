@@ -12,7 +12,13 @@
         "buildType": "apk"
       }
     },
-    "production": {}
+    "production": {},
+    "test": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
+        "withoutCredentials": true
+      }
+    }
   },
   "submit": {
     "production": {}

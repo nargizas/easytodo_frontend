@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    {
+      "marginHorizontal": 16,
+      "marginVertical": 8,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#f5f5f5",
+        "fontSize": 18,
+        "marginBottom": 4,
+      }
+    }
+  >
+    Deadline
+  </Text>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignContent": "center",
+            "alignItems": "center",
+            "backgroundColor": "#f5f5f5",
+            "borderRadius": 16,
+            "justifyContent": "center",
+            "marginHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "fontSize": 16,
+            }
+          }
+        >
+          Pick date
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignContent": "center",
+            "alignItems": "center",
+            "backgroundColor": "#f5f5f5",
+            "borderRadius": 16,
+            "justifyContent": "center",
+            "marginHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "fontSize": 16,
+            }
+          }
+        >
+          Pick time
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "alignItems": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "marginHorizontal": 16,
+            "marginVertical": 8,
+          },
+          {
+            "fontSize": 16,
+          },
+          {
+            "color": "#f5f5f5",
+          },
+        ]
+      }
+    >
+      Selected:
+       
+      1975-4-19 16:29
+    </Text>
+  </View>
+</View>
+`;
