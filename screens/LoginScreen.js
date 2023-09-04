@@ -43,8 +43,8 @@ function LoginScreen({ navigation }) {
 
   // eslint-disable-next-line no-unused-vars
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId: '12610545685-gv1c203f0tbula3jdj8m6bnlo69qeap7.apps.googleusercontent.com',
-    androidClientId: '12610545685-3jcmbapem9d7mqgb83np4icvsgq3heuh.apps.googleusercontent.com',
+    expoClientId: '',
+    androidClientId: '',
   });
 
   useEffect(() => {
